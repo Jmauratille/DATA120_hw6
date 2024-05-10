@@ -1,6 +1,6 @@
 def make_change(total):
     coins = [1, 5, 10, 25, 100]
-    
+
     def change_recursion(remainder, current_combo, start):
         if remainder == 0:
             result.append(current_combo.copy())
@@ -21,6 +21,7 @@ def make_change(total):
 
 def checker(name, abbrev):
     return abbrev[0] == "I" and name[1] == "l"
+
 
 def dict_filter(function, dictionary):
     result = {}
@@ -58,7 +59,6 @@ class DTree:
         right_depth = self.greater.tuple_atleast() if self.greater else 0
         max_child_depth = max(left_depth, right_depth)
 
-        # Ensure that we account for this node's variable if it's specified
         if self.variable is not None:
             return max(max_child_depth, self.variable + 1)
         return max_child_depth
