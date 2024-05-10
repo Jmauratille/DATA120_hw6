@@ -1,4 +1,15 @@
 def make_change(total):
+    """
+    Generate all distinct combinations of coins that add up to the
+    specified total.
+
+    Args:
+    total (int): The total amount for which change is to be made.
+
+    Returns:
+    list of lists: A list containing all combinations of coins that sum up
+    to the total.
+    """
     coins = [1, 5, 10, 25, 100]
 
     def change_recursion(remainder, current_combo, start):
@@ -40,6 +51,19 @@ def treemap(function, tree):
 
 
 class DTree:
+    """
+    Decision tree for modeling decisions based on comparison of thresholds.
+
+    Args:
+    variable (int): Index of the tuple to be inspected.
+    threshold (float): Threshold for decision branching.
+    lessequal (DTree): Subtree for values less than or equal to the threshold.
+    greater (DTree): Subtree for values greater than the threshold.
+    outcome (str, optional): Final decision if this is a leaf node.
+
+    Raises:
+    ValueError: If the initialization parameters are incorrectly provided.
+    """
     def __init__(self, variable, threshold, lessequal, greater, outcome=None):
         if outcome is not None and (variable is not None or threshold is not None or lessequal is not None or greater is not None):
             raise ValueError
