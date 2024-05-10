@@ -35,6 +35,17 @@ def checker(name, abbrev):
 
 
 def dict_filter(function, dictionary):
+    """
+    Filter a dictionary based on a function that takes two parameters
+    and returns a boolean.
+
+    Args:
+    function (callable): A function to test each dictionary item.
+    dictionary (dict): Dictionary to filter.
+
+    Returns:
+    dict: Filtered dictionary.
+    """
     result = {}
     for key, item in dictionary.items():
         if function(key, item) == True:
