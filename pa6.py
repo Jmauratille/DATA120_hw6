@@ -53,15 +53,15 @@ class DTree:
 
     def tuple_atleast(self):
         if self.outcome is not None:
-            return 0 
+            return 0
+        left_depth = self.lessequal.tuple_atleast() if self.lessequal else 0
+        right_depth = self.greater.tuple_atleast() if self.greater else 0
+        max_child_depth = max(left_depth, right_depth)
 
-        max_index = self.variable
-        if self.lessequal:
-            max_index = max(max_index, self.lessequal.tuple_atleast())
-        if self.greater:
-            max_index = max(max_index, self.greater.tuple_atleast())
-        
-        return max_index + 1  
+        # Ensure that we account for this node's variable if it's specified
+        if self.variable is not None:
+            return max(max_child_depth, self.variable + 1)
+        return max_child_depth
 
     def find_outcome(self, observations):
         if self.outcome is not None:
